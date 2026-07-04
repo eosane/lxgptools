@@ -33,7 +33,7 @@ DEFINE_bool(test_profiler_enabled, true,
 
 
 // In order to cover fix for github issue at:
-// https://github.com/gperftools/gperftools/issues/412 we override
+// https://github.com/lxgptools/lxgptools/issues/412 we override
 // operators new/delete to simulate condition where another thread is
 // having malloc lock and making sure that profiler handler can
 // unregister callbacks without deadlocking. Thus this

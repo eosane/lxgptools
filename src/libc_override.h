@@ -56,7 +56,7 @@
 #ifdef HAVE_FEATURES_H
 #include <features.h>   // for __GLIBC__
 #endif
-#include <gperftools/tcmalloc.h>
+#include <lxgptools/tcmalloc.h>
 
 #if __cplusplus >= 201103L || (defined(_MSC_VER) && _MSC_VER >= 1900)
 #define CPP_NOTHROW noexcept

@@ -70,7 +70,7 @@
 #include <stdlib.h> // for getenv
 #include <string.h> // for strcmp
 #include <stdio.h> // for fprintf
-#include "gperftools/stacktrace.h"
+#include "lxgptools/stacktrace.h"
 #include "base/commandlineflags.h"
 #include "base/googleinit.h"
 #include "getenv_safe.h"

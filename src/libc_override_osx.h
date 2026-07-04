@@ -76,7 +76,7 @@
 #ifdef HAVE_FEATURES_H
 #include <features.h>
 #endif
-#include <gperftools/tcmalloc.h>
+#include <lxgptools/tcmalloc.h>
 
 #if !defined(__APPLE__)
 # error libc_override_glibc-osx.h is for OS X distributions only.

@@ -901,8 +901,8 @@ the new community ownership of the project.  Almost all the
 are related to the renaming.
 
 The main functional change from google-perftools 1.10 is that
-I've renamed the `google/` include-directory to be `gperftools/`
-instead.  New code should `#include <gperftools/tcmalloc.h>`/etc.
+I've renamed the `google/` include-directory to be `lxgptools/`
+instead.  New code should `#include <lxgptools/tcmalloc.h>`/etc.
 (Most users of perftools don't need any perftools-specific includes at
 all, so this is mostly directed to "power users.")  I've kept the old
 names around as forwarding headers to the new, so `#include

@@ -91,7 +91,7 @@
 // At least for gcc on Linux/i386 and Linux/amd64 not adding throw()
 // to tc_xxx functions actually ends up generating better code.
 #define PERFTOOLS_NOTHROW
-#include <gperftools/tcmalloc.h>
+#include <lxgptools/tcmalloc.h>
 
 #include <errno.h>                      // for ENOMEM, EINVAL, errno
 #include <stdint.h>
@@ -106,9 +106,9 @@
 #include <new>                          // for nothrow_t (ptr only), etc
 #include <vector>                       // for vector
 
-#include <gperftools/malloc_extension.h>
-#include <gperftools/malloc_hook.h>         // for MallocHook
-#include <gperftools/nallocx.h>
+#include <lxgptools/malloc_extension.h>
+#include <lxgptools/malloc_hook.h>         // for MallocHook
+#include <lxgptools/nallocx.h>
 #include "base/basictypes.h"            // for int64
 #include "base/commandlineflags.h"      // for RegisterFlagValidator, etc
 #include "base/dynamic_annotations.h"   // for RunningOnValgrind
@@ -1344,7 +1344,7 @@ static void* do_malloc_pages(ThreadCache* heap, size_t size) {
   // (at most 4k out of at least 256k). And not rounding up saves us
   // from possibility of overflow, which rounding up could produce.
   //
-  // See https://github.com/gperftools/gperftools/issues/723
+  // See https://github.com/lxgptools/lxgptools/issues/723
   if (heap->SampleAllocation(size)) {
     result = DoSampledAllocation(size);
 

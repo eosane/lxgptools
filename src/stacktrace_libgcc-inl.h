@@ -46,7 +46,7 @@ extern "C" {
 
 #include <unwind.h>
 
-#include "gperftools/stacktrace.h"
+#include "lxgptools/stacktrace.h"
 
 struct libgcc_backtrace_data {
   void **array;

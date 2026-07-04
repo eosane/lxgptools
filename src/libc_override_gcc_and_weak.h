@@ -42,7 +42,7 @@
 #ifdef HAVE_SYS_CDEFS_H
 #include <sys/cdefs.h>    // for __THROW
 #endif
-#include <gperftools/tcmalloc.h>
+#include <lxgptools/tcmalloc.h>
 
 #include "getenv_safe.h" // TCMallocGetenvSafe
 #include "base/commandlineflags.h"

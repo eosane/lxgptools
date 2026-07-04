@@ -375,8 +375,15 @@ void* mremap(void* old_addr, size_t old_size, size_t new_size,
   va_start(ap, flags);
   void *new_address = va_arg(ap, void *);
   va_end(ap);
-  void* result = (void*)syscall(SYS_mremap, old_addr, old_size, new_size, flags,
-                                new_address);
+  void* result;
+#ifdef SYS_mremap
+  result = (void*)syscall(SYS_mremap, old_addr, old_size, new_size, flags,
+                          new_address);
+#else
+  // Fall back to the libc mremap wrapper if syscall numbers aren't
+  // available in headers on this system.
+  result = glibc_mremap(old_addr, old_size, new_size, flags, new_address);
+#endif
 
   if (result != MAP_FAILED) {
     tcmalloc::MappingEvent evt;

@@ -37,7 +37,7 @@
 #include <config.h>
 #include <stddef.h>                     // for size_t
 #include <stdint.h>                     // for uint64_t, int64_t, uint16_t
-#include <gperftools/malloc_extension.h>
+#include <lxgptools/malloc_extension.h>
 #include "base/basictypes.h"
 #include "common.h"
 #include "packed-cache-inl.h"
@@ -60,7 +60,7 @@
   // We use #define so code compiles even if you #include stacktrace.h somehow.
 # define GetStackTrace(stack, depth, skip)  (0)
 #else
-# include <gperftools/stacktrace.h>
+# include <lxgptools/stacktrace.h>
 #endif
 
 namespace base {

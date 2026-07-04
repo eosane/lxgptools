@@ -43,7 +43,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
-#include <gperftools/malloc_hook.h>
+#include <lxgptools/malloc_hook.h>
 #include "malloc_hook-inl.h"
 #include "base/logging.h"
 #include "base/simple_mutex.h"

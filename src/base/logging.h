@@ -40,8 +40,8 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>    // for write()
+#if !defined(_WIN32)
+#include <unistd.h>    // for write(), STDERR_FILENO
 #endif
 #include <string.h>    // for strlen(), strcmp()
 #include <assert.h>

@@ -36,6 +36,7 @@
 // VDSOSupport -- a class representing kernel VDSO (if present).
 //
 
+#include "base/system_headers.h"
 #include "base/vdso_support.h"
 
 #ifdef HAVE_VDSO_SUPPORT     // defined in vdso_support.h

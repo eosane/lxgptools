@@ -32,6 +32,7 @@
 // This file just provides storage for FLAGS_verbose.
 
 #include <config.h>
+#include "base/system_headers.h"
 #include "base/logging.h"
 #include "base/commandlineflags.h"
 

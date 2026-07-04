@@ -28,10 +28,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/* The code has moved to gperftools/.  Use that include-directory for
+/* The code has moved to lxgptools/.  Use that include-directory for
  * new code.
  */
 #if defined(__GNUC__) && !defined(GPERFTOOLS_SUPPRESS_LEGACY_WARNING)
-#warning "google/heap-profiler.h is deprecated. Use gperftools/heap-profiler.h instead"
+#warning "google/heap-profiler.h is deprecated. Use lxgptools/heap-profiler.h instead"
 #endif
-#include <gperftools/heap-profiler.h>
+#include <lxgptools/heap-profiler.h>

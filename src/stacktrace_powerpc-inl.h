@@ -44,7 +44,7 @@
 
 #include <stdint.h>   // for uintptr_t
 #include <stdlib.h>   // for NULL
-#include <gperftools/stacktrace.h>
+#include <lxgptools/stacktrace.h>
 
 struct layout_ppc {
   struct layout_ppc *next;

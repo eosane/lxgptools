@@ -28,7 +28,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/* The code has moved to gperftools/.  Use that include-directory for
+/* The code has moved to lxgptools/.  Use that include-directory for
  * new code.
  */
-#include <gperftools/tcmalloc.h>
+#include <lxgptools/tcmalloc.h>

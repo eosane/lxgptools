@@ -43,7 +43,7 @@
 #include <unistd.h>                     // for sbrk, getpagesize, off_t
 #endif
 #include <new>                          // for operator new
-#include <gperftools/malloc_extension.h>
+#include <lxgptools/malloc_extension.h>
 #include "base/basictypes.h"
 #include "base/commandlineflags.h"
 #include "base/spinlock.h"              // for SpinLockHolder, SpinLock, etc
@@ -59,7 +59,7 @@
 // Linux added support for MADV_FREE in 4.5 but we aren't ready to use it
 // yet. Among other things, using compile-time detection leads to poor
 // results when compiling on a system with MADV_FREE and running on a
-// system without it. See https://github.com/gperftools/gperftools/issues/780.
+// system without it. See https://github.com/lxgptools/lxgptools/issues/780.
 #if defined(__linux__) && defined(MADV_FREE) && !defined(TCMALLOC_USE_MADV_FREE)
 # undef MADV_FREE
 #endif

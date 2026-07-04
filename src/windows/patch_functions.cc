@@ -92,7 +92,7 @@
 #include <vector>
 #include <base/logging.h>
 #include "base/spinlock.h"
-#include "gperftools/malloc_hook.h"
+#include "lxgptools/malloc_hook.h"
 #include "malloc_hook-inl.h"
 #include "preamble_patcher.h"
 

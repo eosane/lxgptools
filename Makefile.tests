@@ -1,0 +1,52 @@
+# Makefile.tests: build unit tests for gperftools without modifying the main Makefile
+
+CXX ?= g++
+CPPFLAGS ?= -I. -I./src -I./src/lxgptools
+CXXFLAGS ?= -std=c++11 -O2 -Wall -Wextra -Wno-unused-parameter -Wno-unused-result -DHAVE_TLS=1 -DHAVE_PTHREAD=1 -DHAVE_PTHREAD_GETSPECIFIC=1
+SRC_DIR := src
+BUILD_DIR := build
+CONFIG_H := src/config.h
+CONFIG_H_IN := src/config.h.in
+LXGPTOOLS_TCMALLOC_H := src/lxgptools/tcmalloc.h
+LXGPTOOLS_TCMALLOC_H_IN := src/lxgptools/tcmalloc.h.in
+
+TEST_SRCS := $(shell find $(SRC_DIR)/tests -name '*.cc' 2>/dev/null | sort)
+TEST_OBJS := $(patsubst $(SRC_DIR)/tests/%.cc,$(BUILD_DIR)/tests/%.o,$(TEST_SRCS))
+TEST_BINS := $(patsubst $(SRC_DIR)/tests/%.cc,$(BUILD_DIR)/tests/%,$(TEST_SRCS))
+
+.PHONY: tests clean-tests
+
+# Ensure config headers exist by delegating to main Makefile targets
+$(CONFIG_H):
+	@echo "Generating $(CONFIG_H) via main Makefile"
+	$(MAKE) -f Makefile $(CONFIG_H)
+
+$(LXGPTOOLS_TCMALLOC_H):
+	@echo "Generating $(LXGPTOOLS_TCMALLOC_H) via main Makefile"
+	$(MAKE) -f Makefile $(LXGPTOOLS_TCMALLOC_H)
+
+# Compile test objects
+$(BUILD_DIR)/tests/%.o: $(SRC_DIR)/tests/%.cc $(CONFIG_H) $(LXGPTOOLS_TCMALLOC_H)
+	@mkdir -p $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -MMD -MP -c $< -o $@
+
+# Link each test binary from corresponding object
+$(BUILD_DIR)/tests/%: $(BUILD_DIR)/tests/%.o
+	@mkdir -p $(dir $@)
+	@echo "Building main objects via main Makefile (if needed)"
+	$(MAKE) -f Makefile
+	# Link against all built objects but exclude debugallocation.o to avoid
+	# multiple-definition conflicts between tcmalloc and debug allocation
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< $(shell find build -name '*.o' 2>/dev/null | grep -v '/debugallocation.o' || true) -o $@
+
+tests: $(CONFIG_H) $(LXGPTOOLS_TCMALLOC_H) $(TEST_OBJS)
+	@echo "Compiled $(words $(TEST_OBJS)) test object files under $(BUILD_DIR)/tests"
+
+clean-tests:
+	rm -rf $(BUILD_DIR)/tests
+
+# If no tests found, print message
+ifeq ($(TEST_SRCS),)
+tests:
+	@echo "No test sources found under src/tests"
+endif

@@ -114,7 +114,7 @@
 /src/base/.dirstamp
 /src/config.h
 /src/config.h.in
-/src/gperftools/tcmalloc.h
+/src/lxgptools/tcmalloc.h
 /src/stamp-h1
 /src/stamp-h1
 /src/tests/.deps
@@ -148,3 +148,5 @@
 /thread_dealloc_unittest.exe
 /unwind_bench
 /unwind_bench.exe
+build/
+luxor_engine

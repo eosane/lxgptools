@@ -43,7 +43,7 @@
 #include "config_for_unittests.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <gperftools/malloc_extension.h>
+#include <lxgptools/malloc_extension.h>
 #include "base/logging.h"
 
 int main() {

@@ -27,10 +27,10 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-/* The code has moved to gperftools/.  Use that include-directory for
+/* The code has moved to lxgptools/.  Use that include-directory for
  * new code.
  */
 #if defined(__GNUC__) && !defined(GPERFTOOLS_SUPPRESS_LEGACY_WARNING)
-#warning "google/malloc_extension.h is deprecated. Use gperftools/malloc_extension.h instead"
+#warning "google/malloc_extension.h is deprecated. Use lxgptools/malloc_extension.h instead"
 #endif
-#include <gperftools/malloc_extension.h>
+#include <lxgptools/malloc_extension.h>

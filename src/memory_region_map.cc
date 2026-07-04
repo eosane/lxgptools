@@ -123,8 +123,8 @@
 #include "base/low_level_alloc.h"
 #include "mmap_hook.h"
 
-#include <gperftools/stacktrace.h>
-#include <gperftools/malloc_hook.h> // For MallocHook::GetCallerStackTrace
+#include <lxgptools/stacktrace.h>
+#include <lxgptools/malloc_hook.h> // For MallocHook::GetCallerStackTrace
 
 using std::max;
 

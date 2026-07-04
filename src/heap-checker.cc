@@ -66,12 +66,12 @@
 #include <utility>
 #include <vector>
 
-#include <gperftools/heap-checker.h>
+#include <lxgptools/heap-checker.h>
 
-#include <gperftools/malloc_extension.h>
-#include <gperftools/malloc_hook.h>
-#include <gperftools/stacktrace.h>
-#include <gperftools/tcmalloc.h>
+#include <lxgptools/malloc_extension.h>
+#include <lxgptools/malloc_hook.h>
+#include <lxgptools/stacktrace.h>
+#include <lxgptools/tcmalloc.h>
 
 #include "base/basictypes.h"
 #include "base/commandlineflags.h"
@@ -86,6 +86,17 @@
 #include "malloc_hook-inl.h"
 #include "memory_region_map.h"
 #include "safe_strerror.h"
+
+// Map perftools pthread wrappers to the system pthread functions when
+// native TLS is available. This matches mappings in other translation
+// units and ensures heap-checker can use the same symbols.
+#if defined(HAVE_TLS)
+# ifndef perftools_pthread_getspecific
+#  define perftools_pthread_getspecific pthread_getspecific
+#  define perftools_pthread_setspecific pthread_setspecific
+#  define perftools_pthread_key_create pthread_key_create
+# endif
+#endif
 
 // When dealing with ptrace-ed threads, we need to capture all thread
 // registers (as potential live pointers), and we need to capture
@@ -609,7 +620,7 @@ inline static uintptr_t AsInt(const void* ptr) {
 
 // We've seen reports that strstr causes heap-checker crashes in some
 // libc's (?):
-//    http://code.google.com/p/gperftools/issues/detail?id=263
+//    http://code.google.com/p/lxgptools/issues/detail?id=263
 // It's simple enough to use our own.  This is not in time-critical code.
 static const char* hc_strstr(const char* s1, const char* s2) {
   const size_t len = strlen(s2);
@@ -2070,7 +2081,7 @@ void HeapLeakChecker_InternalInitStart() {
                    FLAGS_heap_check.c_str());
   }
   // FreeBSD doesn't seem to honor atexit execution order:
-  //    http://code.google.com/p/gperftools/issues/detail?id=375
+  //    http://code.google.com/p/lxgptools/issues/detail?id=375
   // Since heap-checking before destructors depends on atexit running
   // at the right time, on FreeBSD we always check after, even in the
   // less strict modes.  This just means FreeBSD is always a bit

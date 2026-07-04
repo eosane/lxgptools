@@ -40,7 +40,7 @@
 
 #include <stdint.h>   // for uintptr_t
 #include "base/basictypes.h"  // for NULL
-#include <gperftools/stacktrace.h>
+#include <lxgptools/stacktrace.h>
 
 // WARNING:
 // This only works if all your code is in either ARM or THUMB mode.  With

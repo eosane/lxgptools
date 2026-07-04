@@ -40,10 +40,10 @@
 #include "base/dynamic_annotations.h"
 #include "base/sysinfo.h"    // for FillProcSelfMaps
 #ifndef NO_HEAP_CHECK
-#include "gperftools/heap-checker.h"
+#include "lxgptools/heap-checker.h"
 #endif
-#include "gperftools/malloc_extension.h"
-#include "gperftools/malloc_extension_c.h"
+#include "lxgptools/malloc_extension.h"
+#include "lxgptools/malloc_extension_c.h"
 #include "base/googleinit.h"
 
 using std::string;

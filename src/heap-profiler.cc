@@ -55,7 +55,7 @@
 #include <algorithm>
 #include <string>
 
-#include <gperftools/heap-profiler.h>
+#include <lxgptools/heap-profiler.h>
 
 #include "base/logging.h"
 #include "base/basictypes.h"   // for PRId64, among other things
@@ -63,8 +63,8 @@
 #include "base/commandlineflags.h"
 #include "malloc_hook-inl.h"
 #include "tcmalloc_guard.h"
-#include <gperftools/malloc_hook.h>
-#include <gperftools/malloc_extension.h>
+#include <lxgptools/malloc_hook.h>
+#include <lxgptools/malloc_extension.h>
 #include "base/spinlock.h"
 #include "base/low_level_alloc.h"
 #include "base/sysinfo.h"      // for GetUniquePathFromEnv()

@@ -44,7 +44,7 @@
 #include <string>
 
 #include "base/logging.h"
-#include "gperftools/malloc_extension.h"
+#include "lxgptools/malloc_extension.h"
 #include "tests/testutil.h"
 
 using std::string;

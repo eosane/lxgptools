@@ -50,7 +50,7 @@
 #include <string>
 #include "base/basictypes.h"
 #include "base/logging.h"
-#include <gperftools/heap-profiler.h>
+#include <lxgptools/heap-profiler.h>
 
 using std::string;
 

@@ -8,7 +8,7 @@
 ACLOCAL_AMFLAGS = -I m4
 AUTOMAKE_OPTIONS = subdir-objects
 
-# This is so we can #include <gperftools/foo>
+# This is so we can #include <lxgptools/foo>
 AM_CPPFLAGS = -I$(top_srcdir)/src
 
 if !WITH_STACK_TRACE
@@ -85,14 +85,14 @@ endif !HAVE_OBJCOPY_WEAKEN
 
 LIBS_TO_WEAKEN =
 
-perftoolsincludedir = $(includedir)/gperftools
+perftoolsincludedir = $(includedir)/lxgptools
 # The .h files you want to install (that is, .h files that people
 # who install this package can include in their own applications.)
 # We'll add to this later, on a library-by-library basis
 perftoolsinclude_HEADERS =
 # tcmalloc.h is a special case, because it's a .h.in file
-nodist_perftoolsinclude_HEADERS = src/gperftools/tcmalloc.h
-noinst_HEADERS = src/gperftools/tcmalloc.h.in
+nodist_perftoolsinclude_HEADERS = src/lxgptools/tcmalloc.h
+noinst_HEADERS = src/lxgptools/tcmalloc.h.in
 
 # This is provided for backwards compatibility.  It is populated by
 # files that just forward to the canonical location in
@@ -114,7 +114,7 @@ lib_LTLIBRARIES =
 # This is for 'convenience libraries' -- basically just a container for sources
 noinst_LTLIBRARIES =
 ## The location of the windows project file for each binary we make
-WINDOWS_PROJECTS = gperftools.sln
+WINDOWS_PROJECTS = lxgptools.sln
 
 # unittests you want to run when people type 'make check'.
 # Note: tests cannot take any arguments!
@@ -253,8 +253,8 @@ TESTS += low_level_alloc_unittest
 WINDOWS_PROJECTS += vsprojects/low_level_alloc_unittest/low_level_alloc_unittest.vcxproj
 LOW_LEVEL_ALLOC_UNITTEST_INCLUDES = src/base/low_level_alloc.h \
                                     src/base/basictypes.h \
-                                    src/gperftools/malloc_hook.h \
-                                    src/gperftools/malloc_hook_c.h \
+                                    src/lxgptools/malloc_hook.h \
+                                    src/lxgptools/malloc_hook_c.h \
                                     src/malloc_hook-inl.h \
                                     src/mmap_hook.h \
                                     $(SPINLOCK_INCLUDES) \
@@ -289,7 +289,7 @@ S_STACKTRACE_INCLUDES = src/stacktrace_impl_setup-inl.h \
                         src/base/elf_mem_image.h \
                         src/base/vdso_support.h
 
-SG_STACKTRACE_INCLUDES = src/gperftools/stacktrace.h
+SG_STACKTRACE_INCLUDES = src/lxgptools/stacktrace.h
 STACKTRACE_INCLUDES = $(S_STACKTRACE_INCLUDES) $(SG_STACKTRACE_INCLUDES)
 perftoolsinclude_HEADERS += $(SG_STACKTRACE_INCLUDES)
 googleinclude_HEADERS += src/google/stacktrace.h
@@ -391,11 +391,11 @@ S_TCMALLOC_MINIMAL_INCLUDES = src/common.h \
                               src/stack_trace_table.h \
                               src/base/thread_annotations.h \
                               src/malloc_hook-inl.h
-SG_TCMALLOC_MINIMAL_INCLUDES = src/gperftools/malloc_hook.h \
-                               src/gperftools/malloc_hook_c.h \
-                               src/gperftools/malloc_extension.h \
-                               src/gperftools/malloc_extension_c.h \
-                               src/gperftools/nallocx.h
+SG_TCMALLOC_MINIMAL_INCLUDES = src/lxgptools/malloc_hook.h \
+                               src/lxgptools/malloc_hook_c.h \
+                               src/lxgptools/malloc_extension.h \
+                               src/lxgptools/malloc_extension_c.h \
+                               src/lxgptools/nallocx.h
 TCMALLOC_MINIMAL_INCLUDES = $(S_TCMALLOC_MINIMAL_INCLUDES) $(SG_TCMALLOC_MINIMAL_INCLUDES) $(SG_STACKTRACE_INCLUDES)
 perftoolsinclude_HEADERS += $(SG_TCMALLOC_MINIMAL_INCLUDES)
 googleinclude_HEADERS += src/google/malloc_hook.h \
@@ -456,9 +456,9 @@ LIBS_TO_WEAKEN += libtcmalloc_minimal.la
 # Commented out for the moment because malloc(very_big_num) is broken in
 # standard libc!  At least, in some situations, some of the time.
 ## TESTS += malloc_unittest
-## MALLOC_UNITEST_INCLUDES = src/gperftools/malloc_extension.h \
-##                           src/gperftools/malloc_hook.h \
-##                           src/gperftools/malloc_hook_c.h \
+## MALLOC_UNITEST_INCLUDES = src/lxgptools/malloc_extension.h \
+##                           src/lxgptools/malloc_hook.h \
+##                           src/lxgptools/malloc_hook_c.h \
 ##                           src/malloc_hook-inl.h \
 ##                           src/base/basictypes.h \
 ## malloc_unittest_SOURCES = src/tests/tcmalloc_unittest.cc \
@@ -574,7 +574,7 @@ WINDOWS_PROJECTS += vsprojects/malloc_hook_test/malloc_hook_test.vcxproj
 malloc_hook_test_SOURCES = src/tests/malloc_hook_test.cc \
                            src/config_for_unittests.h \
                            src/base/logging.h \
-                           src/gperftools/malloc_hook.h \
+                           src/lxgptools/malloc_hook.h \
                            src/tests/testutil.h src/tests/testutil.cc
 malloc_hook_test_CXXFLAGS = $(PTHREAD_CFLAGS) $(AM_CXXFLAGS)
 malloc_hook_test_LDFLAGS = $(PTHREAD_CFLAGS) $(TCMALLOC_FLAGS)
@@ -592,8 +592,8 @@ WINDOWS_PROJECTS += vsprojects/malloc_extension_test/malloc_extension_test.vcxpr
 malloc_extension_test_SOURCES = src/tests/malloc_extension_test.cc \
                                 src/config_for_unittests.h \
                                 src/base/logging.h \
-                                src/gperftools/malloc_extension.h \
-                                src/gperftools/malloc_extension_c.h
+                                src/lxgptools/malloc_extension.h \
+                                src/lxgptools/malloc_extension_c.h
 malloc_extension_test_CXXFLAGS = $(PTHREAD_CFLAGS) $(AM_CXXFLAGS)
 malloc_extension_test_LDFLAGS = $(PTHREAD_CFLAGS) $(TCMALLOC_FLAGS)
 malloc_extension_test_LDADD = $(LIBTCMALLOC_MINIMAL) $(PTHREAD_LIBS)
@@ -604,8 +604,8 @@ malloc_extension_test_LDADD = $(LIBTCMALLOC_MINIMAL) $(PTHREAD_LIBS)
 if !MINGW
 TESTS += malloc_extension_c_test
 malloc_extension_c_test_SOURCES = src/tests/malloc_extension_c_test.cc \
-                                  src/gperftools/malloc_extension.h \
-                                  src/gperftools/malloc_extension_c.h
+                                  src/lxgptools/malloc_extension.h \
+                                  src/lxgptools/malloc_extension_c.h
 malloc_extension_c_test_CFLAGS = $(PTHREAD_CFLAGS) $(AM_CFLAGS)
 malloc_extension_c_test_LDFLAGS = $(PTHREAD_CFLAGS) $(TCMALLOC_FLAGS)
 malloc_extension_c_test_LDADD = libtcmalloc_minimal.la
@@ -853,8 +853,8 @@ S_TCMALLOC_INCLUDES = $(S_TCMALLOC_MINIMAL_INCLUDES) \
                       src/emergency_malloc.h \
                       src/mmap_hook.h
 
-SG_TCMALLOC_INCLUDES = src/gperftools/heap-profiler.h \
-                       src/gperftools/heap-checker.h
+SG_TCMALLOC_INCLUDES = src/lxgptools/heap-profiler.h \
+                       src/lxgptools/heap-checker.h
 TCMALLOC_INCLUDES = $(S_TCMALLOC_INCLUDES) $(SG_TCMALLOC_MINIMAL_INCLUDES) \
 		    $(SG_TCMALLOC_INCLUDES) $(SG_STACKTRACE_INCLUDES)
 perftoolsinclude_HEADERS += $(SG_TCMALLOC_INCLUDES)
@@ -909,6 +909,14 @@ libtcmalloc_la_CXXFLAGS = $(PTHREAD_CFLAGS) -DNDEBUG $(AM_CXXFLAGS) \
 libtcmalloc_la_LDFLAGS = $(PTHREAD_CFLAGS) -version-info @TCMALLOC_SO_VERSION@
 libtcmalloc_la_LIBADD = libtcmalloc_internal.la $(PTHREAD_LIBS)
 
+lib_LTLIBRARIES += liblxgptools.la
+liblxgptools_la_SOURCES = $(TCMALLOC_CC) $(TCMALLOC_INCLUDES) \
+                           $(HEAP_CHECKER_SOURCES)
+liblxgptools_la_CXXFLAGS = $(PTHREAD_CFLAGS) -DNDEBUG $(AM_CXXFLAGS) \
+                             $(MAYBE_NO_HEAP_CHECK) $(EMERGENCY_MALLOC_DEFINE)
+liblxgptools_la_LDFLAGS = $(PTHREAD_CFLAGS) -version-info @TCMALLOC_SO_VERSION@
+liblxgptools_la_LIBADD = libtcmalloc_internal.la $(PTHREAD_LIBS)
+
 # same as above with without -DNDEBUG
 noinst_LTLIBRARIES += libtcmalloc_internal_with_asserts.la
 libtcmalloc_internal_with_asserts_la_SOURCES = $(libtcmalloc_internal_la_SOURCES)
@@ -941,7 +949,7 @@ tcmalloc_unittest.sh$(EXEEXT): $(top_srcdir)/$(tcmalloc_unittest_sh_SOURCES) \
 
 noinst_PROGRAMS += tcmalloc_unittest
 tcmalloc_unittest_INCLUDES = src/config_for_unittests.h \
-                             src/gperftools/malloc_extension.h
+                             src/lxgptools/malloc_extension.h
 tcmalloc_unittest_SOURCES = src/tests/tcmalloc_unittest.cc \
                             src/tcmalloc.h \
                             src/tests/testutil.h src/tests/testutil.cc \
@@ -959,7 +967,7 @@ tcmalloc_unittest_LDADD = $(LIBTCMALLOC) liblogging.la $(PTHREAD_LIBS)
 
 TESTS += tcm_asserts_unittest
 tcm_asserts_unittest_INCLUDES = src/config_for_unittests.h \
-                             src/gperftools/malloc_extension.h
+                             src/lxgptools/malloc_extension.h
 tcm_asserts_unittest_SOURCES = src/tests/tcmalloc_unittest.cc \
                             src/tcmalloc.h \
                             src/tests/testutil.h src/tests/testutil.cc \
@@ -1050,7 +1058,7 @@ sampling_test.sh$(EXEEXT): $(top_srcdir)/$(sampling_test_sh_SOURCES) \
 noinst_PROGRAMS += sampling_test
 SAMPLING_TEST_INCLUDES = src/config_for_unittests.h \
                          src/base/logging.h \
-                         src/gperftools/malloc_extension.h
+                         src/lxgptools/malloc_extension.h
 sampling_test_SOURCES = src/tests/sampling_test.cc \
                         $(SAMPLING_TEST_INCLUDES)
 sampling_test_CXXFLAGS = -g $(PTHREAD_CFLAGS) $(AM_CXXFLAGS)
@@ -1072,7 +1080,7 @@ heap-profiler_unittest.sh$(EXEEXT): $(top_srcdir)/$(heap_profiler_unittest_sh_SO
 # These are sub-programs used by heap-profiler_unittest.sh
 noinst_PROGRAMS += heap-profiler_unittest
 HEAP_PROFILER_UNITTEST_INCLUDES = src/config_for_unittests.h \
-                                  src/gperftools/heap-profiler.h
+                                  src/lxgptools/heap-profiler.h
 heap_profiler_unittest_SOURCES = src/tests/heap-profiler_unittest.cc \
                                  $(HEAP_PROFILER_UNITTEST_INCLUDES)
 heap_profiler_unittest_CXXFLAGS = -g $(PTHREAD_CFLAGS) $(AM_CXXFLAGS)
@@ -1105,7 +1113,7 @@ HEAP_CHECKER_UNITTEST_INCLUDES = src/config_for_unittests.h \
                                  src/memory_region_map.h \
                                  src/base/commandlineflags.h \
                                  src/base/googleinit.h \
-                                 src/gperftools/heap-checker.h \
+                                 src/lxgptools/heap-checker.h \
                                  $(LOGGING_INCLUDES)
 heap_checker_unittest_SOURCES = src/tests/heap-checker_unittest.cc \
                                 $(HEAP_CHECKER_UNITTEST_INCLUDES)
@@ -1231,7 +1239,7 @@ S_CPU_PROFILER_INCLUDES = src/profiledata.h \
                           src/base/sysinfo.h \
                           $(SPINLOCK_INCLUDES) \
                           $(LOGGING_INCLUDES)
-SG_CPU_PROFILER_INCLUDES = src/gperftools/profiler.h
+SG_CPU_PROFILER_INCLUDES = src/lxgptools/profiler.h
 CPU_PROFILER_INCLUDES = $(S_CPU_PROFILER_INCLUDES) $(SG_CPU_PROFILER_INCLUDES) \
 			$(SG_STACKTRACE_INCLUDES)
 perftoolsinclude_HEADERS += $(SG_CPU_PROFILER_INCLUDES)
@@ -1287,7 +1295,7 @@ profiler_unittest.sh$(EXEEXT): $(top_srcdir)/$(profiler_unittest_sh_SOURCES) \
 noinst_PROGRAMS += profiler1_unittest profiler2_unittest profiler3_unittest \
                    profiler4_unittest
 PROFILER_UNITTEST_INCLUDES = src/config_for_unittests.h \
-                             src/gperftools/profiler.h
+                             src/lxgptools/profiler.h
 PROFILER_UNITTEST_SRCS = src/tests/profiler_unittest.cc \
                          src/tests/testutil.h src/tests/testutil.cc \
                          $(PROFILER_UNITTEST_INCLUDES)
@@ -1444,7 +1452,7 @@ dist-hook: $(top_distdir)/ChangeLog
 EXTRA_DIST = packages/rpm.sh packages/rpm/rpm.spec packages/deb.sh packages/deb \
              $(SCRIPTS) libtool \
              src/windows/get_mangled_names.cc src/windows/override_functions.cc \
-             src/windows/config.h src/windows/gperftools/tcmalloc.h \
+             src/windows/config.h src/windows/lxgptools/tcmalloc.h \
              docs/pprof.see_also src/windows/TODO \
              $(WINDOWS_PROJECTS) \
              src/solaris/libstdc++.la \

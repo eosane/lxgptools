@@ -2,7 +2,7 @@
 #include "config.h"
 
 #include "base/basictypes.h"
-#include "gperftools/stacktrace.h"
+#include "lxgptools/stacktrace.h"
 
 #include <stdlib.h>
 #include <stdio.h>

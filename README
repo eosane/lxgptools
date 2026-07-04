@@ -37,7 +37,7 @@ when compiling.  gcc makes some optimizations assuming it is using its
 own, built-in malloc; that assumption obviously isn't true with
 tcmalloc.  In practice, we haven't seen any problems with this, but
 the expected risk is highest for users who register their own malloc
-hooks with tcmalloc (using gperftools/malloc_hook.h).  The risk is
+hooks with tcmalloc (using lxgptools/malloc_hook.h).  The risk is
 lowest for folks who use tcmalloc_minimal (or, of course, who pass in
 the above flags :-) ).
 

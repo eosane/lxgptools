@@ -53,7 +53,7 @@
 #include <new>                          // for operator new
 #include <string>
 
-#include <gperftools/malloc_extension.h>
+#include <lxgptools/malloc_extension.h>
 #include "base/basictypes.h"
 #include "base/googleinit.h"
 #include "base/sysinfo.h"

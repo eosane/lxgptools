@@ -37,8 +37,8 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include "base/logging.h"
-#include <gperftools/malloc_extension.h>
-#include <gperftools/malloc_extension_c.h>
+#include <lxgptools/malloc_extension.h>
+#include <lxgptools/malloc_extension_c.h>
 
 int main(int argc, char** argv) {
   void* a = malloc(1000);

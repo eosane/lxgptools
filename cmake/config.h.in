@@ -202,7 +202,7 @@
 #define PACKAGE "@PROJECT_NAME@"
 
 /* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "gperftools@googlegroups.com"
+#define PACKAGE_BUGREPORT "lxgptools@googlegroups.com"
 
 /* Define to the full name of this package. */
 #define PACKAGE_NAME "@PROJECT_NAME@"

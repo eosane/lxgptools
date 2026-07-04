@@ -28,7 +28,7 @@
 // This is a unit test for exercising fragmentation of large (over 1
 // meg) page spans. It makes sure that allocations/releases of
 // increasing memory chunks do not blowup memory
-// usage. See also https://code.google.com/p/gperftools/issues/detail?id=368
+// usage. See also https://code.google.com/p/lxgptools/issues/detail?id=368
 
 
 #include <stddef.h>
@@ -37,7 +37,7 @@
 
 #include "base/logging.h"
 #include "common.h"
-#include <gperftools/malloc_extension.h>
+#include <lxgptools/malloc_extension.h>
 
 
 int main (int argc, char** argv) {

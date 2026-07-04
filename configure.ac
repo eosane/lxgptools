@@ -4,7 +4,7 @@
 # make sure we're interpreted by some minimal autoconf
 AC_PREREQ([2.69])
 
-AC_INIT([gperftools],[2.10],[gperftools@googlegroups.com])
+AC_INIT([lxgptools],[2.10],[lxgptools@googlegroups.com])
 # Update this value for every release!  (A:B:C will map to foo.so.(A-C).C.B)
 # http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
 TCMALLOC_SO_VERSION=9:10:5
@@ -285,7 +285,7 @@ AC_CHECK_DECLS([cfree,
                 #include <malloc.h>])
 
 if test "$ac_cv_type_struct_mallinfo" = yes; then
-  AC_SUBST(ac_cv_have_struct_mallinfo, 1)   # gperftools/tcmalloc.h needs this
+  AC_SUBST(ac_cv_have_struct_mallinfo, 1)   # lxgptools/tcmalloc.h needs this
 else
   AC_SUBST(ac_cv_have_struct_mallinfo, 0)
 fi
@@ -430,7 +430,7 @@ AS_IF([test "$perftools_cv_have_align_val_t" = yes || test "$perftools_cv_have_f
          AC_MSG_NOTICE([Will not build new/delete operators for overaligned types]))
 
 if test "$perftools_cv_have_align_val_t" = yes || test "$perftools_cv_have_f_aligned_new" = yes; then
-  AC_SUBST(ac_cv_have_std_align_val_t, 1)   # gperftools/tcmalloc.h and windows/gperftools/tcmalloc.h need this
+  AC_SUBST(ac_cv_have_std_align_val_t, 1)   # lxgptools/tcmalloc.h and windows/lxgptools/tcmalloc.h need this
 else
   AC_SUBST(ac_cv_have_std_align_val_t, 0)
 fi
@@ -576,7 +576,7 @@ AC_DEFINE(PERFTOOLS_DLL_DECL,,
 # the end result is if config.h is #included twice, its #undefs get
 # evaluated twice, but all the ones in mingw.h/etc only get evaluated
 # once, potentially causing trouble.  c.f.
-#   http://code.google.com/p/gperftools/issues/detail?id=246
+#   http://code.google.com/p/lxgptools/issues/detail?id=246
 AH_TOP([
 #ifndef GPERFTOOLS_CONFIG_H_
 #define GPERFTOOLS_CONFIG_H_
@@ -650,11 +650,9 @@ AC_ARG_ENABLE([aggressive-decommit-by-default],
               [enable_aggressive_decommit_by_default="$enableval"],
               [enable_aggressive_decommit_by_default=no])
 AS_IF([test "x$enable_aggressive_decommit_by_default" = xyes],
-      [AC_DEFINE([ENABLE_AGGRESSIVE_DECOMMIT_BY_DEFAULT],
-                 1,
-                 [enable aggressive decommit by default])])
+      [AC_DEFINE([ENABLE_AGGRESSIVE_DECOMMIT_BY_DEFAULT], 1, [enable aggressive decommit by default])])
 
 # Write generated configuration file
-AC_CONFIG_FILES([Makefile
-                 src/gperftools/tcmalloc.h src/windows/gperftools/tcmalloc.h])
+AC_CONFIG_FILES([Makefile])
+AC_CONFIG_HEADERS([src/lxgptools/tcmalloc.h:src/lxgptools/tcmalloc.h.in])
 AC_OUTPUT

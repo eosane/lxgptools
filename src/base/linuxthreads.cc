@@ -38,6 +38,10 @@
 #define _GNU_SOURCE
 #endif
 
+#include "base/system_headers.h"
+
+#include "base/system_headers.h"
+
 #include "base/linuxthreads.h"
 
 #include <errno.h>

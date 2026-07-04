@@ -45,7 +45,7 @@
 
 #include <atomic>
 
-#include "gperftools/profiler.h"
+#include "lxgptools/profiler.h"
 #include "base/simple_mutex.h"
 #include "tests/testutil.h"
 

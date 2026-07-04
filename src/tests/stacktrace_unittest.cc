@@ -54,7 +54,7 @@
 
 #include "base/commandlineflags.h"
 #include "base/logging.h"
-#include <gperftools/stacktrace.h>
+#include <lxgptools/stacktrace.h>
 #include "tests/testutil.h"
 
 static bool verbosity_setup = ([] () {

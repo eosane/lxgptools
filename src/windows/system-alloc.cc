@@ -38,7 +38,7 @@
 #include <config.h>
 #include <windows.h>
 #include <algorithm> // std::min
-#include <gperftools/malloc_extension.h>
+#include <lxgptools/malloc_extension.h>
 #include "base/logging.h"
 #include "base/spinlock.h"
 #include "internal_logging.h"

@@ -44,7 +44,7 @@
 #include <atomic>
 
 #include "base/basictypes.h"
-#include <gperftools/malloc_hook.h>
+#include <lxgptools/malloc_hook.h>
 
 #include "common.h" // for UNLIKELY
 

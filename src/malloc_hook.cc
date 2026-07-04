@@ -33,7 +33,7 @@
 
 #include <config.h>
 
-#include <gperftools/malloc_hook.h>
+#include <lxgptools/malloc_hook.h>
 #include "malloc_hook-inl.h"
 
 #include <stddef.h>
@@ -57,7 +57,7 @@
   // We use #define so code compiles even if you #include stacktrace.h somehow.
 # define GetStackTrace(stack, depth, skip)  (0)
 #else
-# include <gperftools/stacktrace.h>
+# include <lxgptools/stacktrace.h>
 #endif
 
 // __THROW is defined in glibc systems.  It means, counter-intuitively,

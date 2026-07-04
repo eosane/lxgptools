@@ -38,7 +38,7 @@
 
 #include <config.h>
 #include <features.h>     // for __GLIBC__
-#include <gperftools/tcmalloc.h>
+#include <lxgptools/tcmalloc.h>
 
 #ifndef __GLIBC__
 # error libc_override_glibc.h is for glibc distributions only.

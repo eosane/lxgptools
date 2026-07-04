@@ -345,7 +345,7 @@ void CentralFreeList::Populate() {
   // Note, when ptr is close to the top of address space, ptr + size
   // might overflow the top of address space before we're able to
   // detect that it exceeded limit. So we need to be careful. See
-  // https://github.com/gperftools/gperftools/issues/1323.
+  // https://github.com/lxgptools/lxgptools/issues/1323.
   ASSERT(limit - size >= ptr);
   for (;;) {
 

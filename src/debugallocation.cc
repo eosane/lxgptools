@@ -32,10 +32,9 @@
 // Author: Urs Holzle <opensource@google.com>
 
 #include "config.h"
+#include "base/system_headers.h"
 #include <errno.h>
-#ifdef HAVE_FCNTL_H
-#include <fcntl.h>
-#endif
+#include <ctime>
 #include <inttypes.h>
 // We only need malloc.h for struct mallinfo.
 #ifdef HAVE_STRUCT_MALLINFO
@@ -63,9 +62,9 @@
 #include <unistd.h>
 #endif
 
-#include <gperftools/malloc_extension.h>
-#include <gperftools/malloc_hook.h>
-#include <gperftools/stacktrace.h>
+#include <lxgptools/malloc_extension.h>
+#include <lxgptools/malloc_hook.h>
+#include <lxgptools/stacktrace.h>
 
 #include "addressmap-inl.h"
 #include "base/commandlineflags.h"

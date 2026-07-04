@@ -1,11 +1,11 @@
 usr/include/google/*
-usr/include/gperftools/*
+usr/include/lxgptools/*
 usr/lib/lib*.so
 usr/lib/lib*.a
 usr/lib/*.la
 usr/lib/pkgconfig/*.pc
 debian/tmp/usr/include/google/*
-debian/tmp/usr/include/gperftools/*
+debian/tmp/usr/include/lxgptools/*
 debian/tmp/usr/lib/lib*.so
 debian/tmp/usr/lib/lib*.a
 debian/tmp/usr/lib/*.la

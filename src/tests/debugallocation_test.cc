@@ -37,8 +37,8 @@
 #include <stdlib.h>
 #include <string.h> // for memcmp
 #include <vector>
-#include "gperftools/malloc_extension.h"
-#include "gperftools/tcmalloc.h"
+#include "lxgptools/malloc_extension.h"
+#include "lxgptools/tcmalloc.h"
 #include "base/logging.h"
 #include "tests/testutil.h"
 

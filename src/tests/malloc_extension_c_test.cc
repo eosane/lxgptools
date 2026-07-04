@@ -41,9 +41,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>   /* for size_t */
-#include <gperftools/malloc_extension_c.h>
-#include <gperftools/malloc_hook_c.h>
-#include <gperftools/tcmalloc.h>
+#include <lxgptools/malloc_extension_c.h>
+#include <lxgptools/malloc_hook_c.h>
+#include <lxgptools/tcmalloc.h>
 
 #define FAIL(msg) do {                          \
   fprintf(stderr, "FATAL ERROR: %s\n", msg);    \

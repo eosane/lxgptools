@@ -41,7 +41,7 @@
 #include <unistd.h>    // for write()
 #endif
 
-#include <gperftools/malloc_extension.h>
+#include <lxgptools/malloc_extension.h>
 #include "base/logging.h"   // for perftools_vsnprintf
 #include "base/spinlock.h"              // for SpinLockHolder, SpinLock
 

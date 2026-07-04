@@ -44,8 +44,8 @@
 
 #include "base/logging.h"                // for Check_GEImpl, Check_LTImpl, etc
 #include "common.h"                      // for kAddressBits
-#include "gperftools/malloc_extension.h" // for MallocExtension::instance
-#include "gperftools/tcmalloc.h"
+#include "lxgptools/malloc_extension.h" // for MallocExtension::instance
+#include "lxgptools/tcmalloc.h"
 #include "tests/testutil.h"
 
 class ArraySysAllocator : public SysAllocator {

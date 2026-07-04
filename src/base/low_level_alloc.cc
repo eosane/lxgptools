@@ -40,7 +40,7 @@
 #include "base/logging.h"
 
 #include "malloc_hook-inl.h"
-#include <gperftools/malloc_hook.h>
+#include <lxgptools/malloc_hook.h>
 
 #include "mmap_hook.h"
 

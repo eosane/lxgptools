@@ -46,7 +46,7 @@ extern "C" {
 #include <string.h>   // for memset()
 #include <libunwind.h>
 }
-#include "gperftools/stacktrace.h"
+#include "lxgptools/stacktrace.h"
 
 #include "base/basictypes.h"
 #include "base/logging.h"

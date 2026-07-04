@@ -34,7 +34,7 @@
 #include <config.h>
 #include <inttypes.h>                   // for PRIuPTR
 #include <errno.h>                      // for ENOMEM, errno
-#include <gperftools/malloc_extension.h>      // for MallocRange, etc
+#include <lxgptools/malloc_extension.h>      // for MallocRange, etc
 #include "base/basictypes.h"
 #include "base/commandlineflags.h"
 #include "internal_logging.h"  // for ASSERT, TCMalloc_Printer, etc
@@ -135,7 +135,7 @@ Span* PageHeap::New(Length n) {
     // penalized with higher count of minor page faults.
     //
     // See also large_heap_fragmentation_unittest.cc and
-    // https://code.google.com/p/gperftools/issues/detail?id=368
+    // https://code.google.com/p/lxgptools/issues/detail?id=368
     ReleaseAtLeastNPages(static_cast<Length>(0x7fffffff));
 
     // then try again. If we are forced to grow heap because of large

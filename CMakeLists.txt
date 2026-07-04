@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.12)
 
 project(gperftools VERSION 2.10.0 LANGUAGES C CXX
         DESCRIPTION "Performance tools for C++"
-        HOMEPAGE_URL http://code.google.com/p/gperftools/)
+        HOMEPAGE_URL http://code.google.com/p/lxgptools/)
 
 # Update this value for every release!
 set(TCMALLOC_SO_VERSION 9.10.5)
@@ -426,7 +426,7 @@ endif()
 
 configure_file(cmake/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h @ONLY)
 configure_file(cmake/tcmalloc.h.in
-               ${CMAKE_CURRENT_BINARY_DIR}/gperftools/tcmalloc.h
+               ${CMAKE_CURRENT_BINARY_DIR}/lxgptools/tcmalloc.h
                @ONLY)
 
 if(GPERFTOOLS_BUILD_CPU_PROFILER OR
@@ -439,7 +439,7 @@ endif()
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-# This is so we can #include <gperftools/foo>
+# This is so we can #include <lxgptools/foo>
 include_directories($<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>)
 
 if(NOT WITH_STACK_TRACE)
@@ -583,8 +583,8 @@ if(BUILD_TESTING)
   set(LOW_LEVEL_ALLOC_UNITTEST_INCLUDES
           src/base/low_level_alloc.h
           src/base/basictypes.h
-          src/gperftools/malloc_hook.h
-          src/gperftools/malloc_hook_c.h
+          src/lxgptools/malloc_hook.h
+          src/lxgptools/malloc_hook_c.h
           src/malloc_hook-inl.h
           ${SPINLOCK_INCLUDES}
           ${LOGGING_INCLUDES})
@@ -621,7 +621,7 @@ if(WITH_STACK_TRACE)
           src/base/elf_mem_image.h
           src/base/vdso_support.h)
 
-  set(SG_STACKTRACE_INCLUDES src/gperftools/stacktrace.h)
+  set(SG_STACKTRACE_INCLUDES src/lxgptools/stacktrace.h)
   set(STACKTRACE_INCLUDES ${S_STACKTRACE_INCLUDES} ${SG_STACKTRACE_INCLUDES})
   list(APPEND perftoolsinclude_HEADERS ${SG_STACKTRACE_INCLUDES})
 
@@ -699,11 +699,11 @@ set(S_TCMALLOC_MINIMAL_INCLUDES src/common.h
         src/stack_trace_table.h
         src/base/thread_annotations.h
         src/malloc_hook-inl.h)
-set(SG_TCMALLOC_MINIMAL_INCLUDES src/gperftools/malloc_hook.h
-        src/gperftools/malloc_hook_c.h
-        src/gperftools/malloc_extension.h
-        src/gperftools/malloc_extension_c.h
-        src/gperftools/nallocx.h)
+set(SG_TCMALLOC_MINIMAL_INCLUDES src/lxgptools/malloc_hook.h
+        src/lxgptools/malloc_hook_c.h
+        src/lxgptools/malloc_extension.h
+        src/lxgptools/malloc_extension_c.h
+        src/lxgptools/nallocx.h)
 set(TCMALLOC_MINIMAL_INCLUDES ${S_TCMALLOC_MINIMAL_INCLUDES} ${SG_TCMALLOC_MINIMAL_INCLUDES} ${SG_STACKTRACE_INCLUDES})
 list(APPEND perftoolsinclude_HEADERS ${SG_TCMALLOC_MINIMAL_INCLUDES})
 
@@ -849,8 +849,8 @@ if(BUILD_TESTING)
   set(malloc_extension_test_SOURCES src/tests/malloc_extension_test.cc
           src/config_for_unittests.h
           src/base/logging.h
-          src/gperftools/malloc_extension.h
-          src/gperftools/malloc_extension_c.h)
+          src/lxgptools/malloc_extension.h
+          src/lxgptools/malloc_extension_c.h)
   set(malloc_extension_test_LIBADD Threads::Threads ${TCMALLOC_FLAGS})
   add_executable(malloc_extension_test ${malloc_extension_test_SOURCES})
   target_link_libraries(malloc_extension_test tcmalloc_minimal ${malloc_extension_test_LIBADD})
@@ -1018,8 +1018,8 @@ if(GPERFTOOLS_BUILD_HEAP_CHECKER OR GPERFTOOLS_BUILD_HEAP_PROFILER)
           src/mmap_hook.h
           src/emergency_malloc.h)
 
-  set(SG_TCMALLOC_INCLUDES src/gperftools/heap-profiler.h
-          src/gperftools/heap-checker.h)
+  set(SG_TCMALLOC_INCLUDES src/lxgptools/heap-profiler.h
+          src/lxgptools/heap-checker.h)
   set(TCMALLOC_INCLUDES ${S_TCMALLOC_INCLUDES} ${SG_TCMALLOC_MINIMAL_INCLUDES}
           ${SG_TCMALLOC_INCLUDES} ${SG_STACKTRACE_INCLUDES})
   list(APPEND perftoolsinclude_HEADERS ${SG_TCMALLOC_INCLUDES})
@@ -1090,7 +1090,7 @@ if(GPERFTOOLS_BUILD_HEAP_CHECKER OR GPERFTOOLS_BUILD_HEAP_PROFILER)
   ### Unittests
   if(BUILD_TESTING)
     set(TCMALLOC_UNITTEST_INCLUDES src/config_for_unittests.h
-            src/gperftools/malloc_extension.h)
+            src/lxgptools/malloc_extension.h)
     set(tcmalloc_unittest_SOURCES src/tests/tcmalloc_unittest.cc
             src/tcmalloc.h
             src/tests/testutil.h src/tests/testutil.cc
@@ -1148,7 +1148,7 @@ if(GPERFTOOLS_BUILD_HEAP_CHECKER OR GPERFTOOLS_BUILD_HEAP_PROFILER)
     list(APPEND TESTS_ENVIRONMENT BINDIR=. TMPDIR=/tmp/perftools)
     set(SAMPLING_TEST_INCLUDES src/config_for_unittests.h
             src/base/logging.h
-            src/gperftools/malloc_extension.h)
+            src/lxgptools/malloc_extension.h)
     set(sampling_test_SOURCES src/tests/sampling_test.cc
             ${SAMPLING_TEST_INCLUDES})
     add_executable(sampling_test ${sampling_test_SOURCES})
@@ -1157,7 +1157,7 @@ if(GPERFTOOLS_BUILD_HEAP_CHECKER OR GPERFTOOLS_BUILD_HEAP_PROFILER)
             COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/src/tests/sampling_test.sh" sampling_test)
     if(GPERFTOOLS_BUILD_HEAP_PROFILER)
       set(HEAP_PROFILER_UNITTEST_INCLUDES src/config_for_unittests.h
-              src/gperftools/heap-profiler.h)
+              src/lxgptools/heap-profiler.h)
       set(heap_profiler_unittest_SOURCES src/tests/heap-profiler_unittest.cc
               ${HEAP_PROFILER_UNITTEST_INCLUDES})
       add_executable(heap_profiler_unittest ${heap_profiler_unittest_SOURCES})
@@ -1177,7 +1177,7 @@ if(GPERFTOOLS_BUILD_HEAP_CHECKER OR GPERFTOOLS_BUILD_HEAP_PROFILER)
               src/memory_region_map.h
               src/base/commandlineflags.h
               src/base/googleinit.h
-              src/gperftools/heap-checker.h
+              src/lxgptools/heap-checker.h
               ${LOGGING_INCLUDES})
       set(heap_checker_unittest_SOURCES src/tests/heap-checker_unittest.cc
               ${HEAP_CHECKER_UNITTEST_INCLUDES})
@@ -1257,7 +1257,7 @@ if(GPERFTOOLS_BUILD_CPU_PROFILER)
           src/base/sysinfo.h
           ${SPINLOCK_INCLUDES}
           ${LOGGING_INCLUDES})
-  set(SG_CPU_PROFILER_INCLUDES src/gperftools/profiler.h)
+  set(SG_CPU_PROFILER_INCLUDES src/lxgptools/profiler.h)
   set(CPU_PROFILER_INCLUDES ${S_CPU_PROFILER_INCLUDES} ${SG_CPU_PROFILER_INCLUDES}
           ${SG_STACKTRACE_INCLUDES})
   list(APPEND perftoolsinclude_HEADERS ${SG_CPU_PROFILER_INCLUDES})
@@ -1307,7 +1307,7 @@ if(GPERFTOOLS_BUILD_CPU_PROFILER)
     add_test(NAME profiler_unittest.sh
             COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/src/tests/profiler_unittest.sh")
     set(PROFILER_UNITTEST_INCLUDES src/config_for_unittests.h
-            src/gperftools/profiler.h)
+            src/lxgptools/profiler.h)
     set(PROFILER_UNITTEST_SRCS src/tests/profiler_unittest.cc
             src/tests/testutil.h src/tests/testutil.cc
             ${PROFILER_UNITTEST_INCLUDES})
@@ -1325,7 +1325,7 @@ if(GPERFTOOLS_BUILD_CPU_PROFILER)
 endif()
 
 install(FILES
-${CMAKE_CURRENT_BINARY_DIR}/gperftools/tcmalloc.h
+${CMAKE_CURRENT_BINARY_DIR}/lxgptools/tcmalloc.h
         ${perftoolsinclude_HEADERS}
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/gperftools)
 

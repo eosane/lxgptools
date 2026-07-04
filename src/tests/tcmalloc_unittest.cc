@@ -84,10 +84,10 @@
 #include <new>
 #include "base/logging.h"
 #include "base/simple_mutex.h"
-#include "gperftools/malloc_hook.h"
-#include "gperftools/malloc_extension.h"
-#include "gperftools/nallocx.h"
-#include "gperftools/tcmalloc.h"
+#include "lxgptools/malloc_hook.h"
+#include "lxgptools/malloc_extension.h"
+#include "lxgptools/nallocx.h"
+#include "lxgptools/tcmalloc.h"
 #include "thread_cache.h"
 #include "system-alloc.h"
 #include "tests/testutil.h"
@@ -1246,7 +1246,7 @@ static int RunAllTests(int argc, char** argv) {
   {
     fprintf(LOGSTREAM, "Testing large sized delete is not crashing\n");
     // Large sized delete
-    // case. https://github.com/gperftools/gperftools/issues/1254
+    // case. https://github.com/lxgptools/lxgptools/issues/1254
     std::vector<char*> addresses;
     constexpr int kSizedDepth = 1024;
     addresses.reserve(kSizedDepth);
